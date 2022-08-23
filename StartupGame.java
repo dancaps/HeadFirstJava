@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class StartupGame{
 
 	public static void main(String[] args){
@@ -6,14 +8,18 @@ class StartupGame{
 		GameHelper helper = new GameHelper();
 
 		Startup newGame = new Startup();
-		int randomNumber = (int) (Math.random() * 5);
-		int[] locations = {randomNumber, randomNumber + 1, randomNumber + 2};
+		int randomNumber = (String) (Math.random() * 5);
+		
+		ArrayList<String> locations;
+		locations.add(randomNumber); 
+		//locations.add(randomNumber + 1);
+		//locations.add(randomNumber + 2};
 
 		newGame.setLocationCells(locations);
 		boolean isAlive = true;
 
 		while(isAlive == true){
-			int guess = helper.getUserInput("Enter a number");
+			String guess = helper.getUserInput("Enter a number");
 			String result = newGame.checkYourself(guess);
 			numberOfGuesses++;
 

@@ -1,31 +1,35 @@
+import java.util.ArrayList;
+
 class Startup{
 	
-	private int[] locationCells;
-	public int numberOfHits = 0;
+	private ArrayList<String> locationCells;
+	private int numberOfHits = 0;
 
-	public void setLocationCells(int[] locs){
+	public void setLocationCells(ArrayList<String> locs){
 		locationCells = locs;
 	}
 
 	public void getLocationCells(){
-		for(int cell : locationCells){
+		for(String cell : locationCells){
 			System.out.print(cell + " ");
 		}
 		System.out.println();
 	}
 
-	public String checkYourself(int guess){
+	public String checkYourself(String userInput){
 		String result = "miss";
-		for(int cell : locationCells){
-			if(guess == cell){
-				result = "hit";
-				numberOfHits++;		
-				break;
+		int index = locationCells.indexOf(userInput);
+		
+		if(index > 0){
+			locationCells.remove(index);
+
+			if(locationCells.isEmpty()){
+			result = "kill";
+			} else { 
+			result = "hit"; 
 			}
 		}
-		if(numberOfHits == locationCells.length){
-			result = "kill";
-		}
+
 		System.out.println(result);
 		return result;
 	}
